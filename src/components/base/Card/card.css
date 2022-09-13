@@ -1,0 +1,22 @@
+.product-card{
+    height: 207px;
+    object-fit: cover !important;
+}   
+
+ /* @media (min-width: 1400px) {
+    .card{
+        height: 360px !important;
+     }
+ }
+
+  @media (min-width: 1400px) {
+    .card{
+        height: 360px !important;
+     }
+ }
+
+ @media (min-width: 992px) {
+    .card{
+        height: 285px !important;
+     }
+  } */

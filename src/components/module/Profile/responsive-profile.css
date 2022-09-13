@@ -1,0 +1,96 @@
+@media (max-width: 575.98px) {
+  .list-search {
+    margin-left: -2px;
+  }
+  .filter {
+    float: right;
+    margin: 5px;
+    width: 25%;
+
+    margin-left: -70px !important;
+  }
+  .profil-avatar,
+  .profil-select {
+    margin-left: 10px !important;
+    margin-top: 40px;
+  }
+  .photo-form {
+    border: 1px dotted #d4d4d4;
+    border-radius: 4px;
+    height: 1500px;
+  }
+  .upload {
+    margin-top: 22px !important;
+  }
+  .select-profil {
+    height: 480px !important;
+    margin-top: 5px !important;
+  }
+  .image,
+  .image-text {
+    margin-top: 5px;
+  }
+  .profil-form {
+    margin-left: 2px;
+    margin-top: -15px !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+}
+
+@media (max-width: 991.98px) {
+  .profil-form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    flex: 1;
+    margin-left: -5px !important;
+    margin-top: 4px !important;
+  }
+
+  .card {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+  }
+
+  .select-profil {
+    background-color: #fff;
+    align-items: center;
+    margin-top: 82px !important;
+    height: 190px !important;
+    width: 100% !important;
+    margin-left: -5px !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .profil-form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    flex: 1;
+    margin-left: 5px;
+    margin-top: 66px;
+  }
+
+  .card {
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+  }
+
+  .select-profil {
+    background-color: #fff;
+    align-items: center;
+    margin-top: 82px !important;
+    height: 580px;
+    margin-left: -31px;
+  }
+}
+
+@media (max-width: 1399.98px) {
+}

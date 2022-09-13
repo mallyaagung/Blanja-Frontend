@@ -1,0 +1,55 @@
+.edit-profil {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #9b9b9b;
+  margin-top: -8px;
+}
+
+.my-bag {
+  margin: auto 75px;
+}
+
+.card {
+  width: 100% !important;
+}
+
+.table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.text-profil {
+  font-weight: 600;
+}
+.select-profil {
+  background-color: #fff;
+  width: 280px !important;
+  align-items: center;
+  margin-top: 82px !important;
+  height: 580px;
+  margin-left: -5px;
+}
+.profil-avatar,
+.profil-select {
+  margin-left: 20px;
+}
+.profil-form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  margin-top: 66px;
+  margin-left: 5px;
+}
+.image,
+.image-text {
+  margin-top: 70px;
+}
+.title-dashboard {
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 24px;
+  margin-top: 5x;
+}
