@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import logo from "../../assets/image/logo.svg";
 // import Style from '../auth/style.module.css'
@@ -15,18 +15,18 @@ const Register = ({ label, ...props }) => {
     fullname: "",
     email: "",
     password: "",
-    roles: "buyer"
+    roles: "customer",
   });
 
-      if (auth === user) {
-        alert("Upsss... You are wrong!");
-      }
-      console.log(user);
+  if (auth === user) {
+    alert("Upsss... You are wrong!");
+  }
+  console.log(user);
   const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
-      roles : "buyer"
+      roles: "customer",
     });
   };
 
@@ -34,7 +34,7 @@ const Register = ({ label, ...props }) => {
     e.preventDefault();
     dispatch(signUp(user, navigate));
   };
-if (auth.id) return navigate("/login");
+  if (auth.id) return navigate("/login");
 
   return (
     <div>

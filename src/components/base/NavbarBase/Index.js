@@ -66,7 +66,6 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
     datas();
   }, []);
 
-  const [setDate_of_birth, setDate_of_birthsetDate_of_birth] = useState("");
   useEffect(() => {
     datas();
   }, []);
@@ -81,7 +80,6 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
         },
       }
     );
-    setDate_of_birthsetDate_of_birth(response.data.data[0].setDate_of_birth);
   };
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
@@ -133,7 +131,7 @@ const NavbarBase = ({ onChange, onClick, src, srcCart }) => {
                 align="end"
                 title={
                   <img
-                    src={setDate_of_birth ? setDate_of_birth : Profil}
+                    src={Profil}
                     alt=""
                     width={35}
                     height={35}

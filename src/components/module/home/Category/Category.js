@@ -5,18 +5,17 @@ import hiclipart2 from "../../../../assets/image/hiclipart 21.png";
 import hiclipart3 from "../../../../assets/image/hiclipart 22.png";
 import hiclipart4 from "../../../../assets/image/hiclipart 26.png";
 import hiclipart5 from "../../../../assets/image/hiclipart 34.png";
-import '../StyleHome.css'
-import { getCategory} from "../../../../configs/redux/actions/categoryAction"
-
+import "../StyleHome.css";
+import { getCategory } from "../../../../configs/redux/actions/categoryAction";
 
 const Category = () => {
-  const {category}  = useSelector((state) => state.getCategory);
+  const { category } = useSelector((state) => state.getCategory);
   console.log(category);
-   const dispatch = useDispatch();
-   useEffect(() => {
-      dispatch(getCategory());
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCategory());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div>
       <div className="container">
@@ -29,8 +28,8 @@ const Category = () => {
                 <div className="card-body m-2">
                   <img src={hiclipart1} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-                    <a href="/category/{category[0].id}" >
-                    <p className="font-category"></p>
+                    <a href="/category/{category[0].id}">
+                      <p className="font-category"></p>
                     </a>
                   </div>
                 </div>
@@ -81,6 +80,6 @@ const Category = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Category
+export default Category;

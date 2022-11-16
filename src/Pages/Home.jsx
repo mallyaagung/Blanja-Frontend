@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/module/home/Navbar/Navbar";
 import Category from "../components/module/home/Category/Category";
 
@@ -10,6 +10,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import slide1 from "../assets/image/carousel-trend.png";
 import slide2 from "../assets/image/carousel-black.png";
+import Product from "../assets/image/baju.png"
 
 import Populer from "../components/module/home/Popular/Popular";
 import Footer from "../components/module/home/Footer/Footer";
@@ -22,20 +23,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../configs/redux/actions/productsActions";
 
 const Home = () => {
-  const products = useSelector((state) => state.allProducts.products);
+  const [products, setProducts] = useState([])
   const dispatch = useDispatch();
 
   const fetchProducts = async () => {
+    const token = localStorage.getItem("token")
     const response = await axios
-      .get(`${process.env.REACT_APP_BACKEND}/product`)
+      .get(`${process.env.REACT_APP_BACKEND}/product`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .catch((err) => {
         console.log(err);
       });
+    console.log(response);
     dispatch(setProducts(response.data.data));
   };
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  console.log(products);
 
   return (
     <div>
@@ -77,7 +86,7 @@ const Home = () => {
             {products.map((item) => (
               <div className="col" key={item.id}>
                 <Card
-                  src={item.photo}
+                  src={Product}
                   to={`/detail/${item.id}`}
                   titleName={item.productname}
                   price={<FormatRupiah value={item.priceproduct} />}

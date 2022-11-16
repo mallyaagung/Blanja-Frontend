@@ -20,7 +20,6 @@ const Profile = ({
   children,
 }) => {
   const { user } = useSelector((state) => state.auth);
-  const [date_of_brith, setDate_of_brith] = useState("");
   useEffect(() => {
     datas();
   }, []);
@@ -35,10 +34,7 @@ const Profile = ({
         },
       }
     );
-    console.log(response.data.data.fullname);
-    setDate_of_brith(response.data.data[0].date_of_brith);
   };
-  console.log(user);
   return (
     <div className="col-md-4 mt-2 select-profil">
       <div className="profil-avatar ">
@@ -49,7 +45,7 @@ const Profile = ({
                 className="rounded-circle"
                 width={75}
                 height={70}
-                src={date_of_brith ? date_of_brith : profile}
+                src={profile}
                 alt="img"
               />
             </td>

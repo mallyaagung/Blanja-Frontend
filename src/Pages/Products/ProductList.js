@@ -10,6 +10,7 @@ import Footer from "../../components/module/home/Footer/Footer";
 import Navbar from "../../components/module/home/Navbar/Navbar";
 import CreateModalProduct from "../../components/module/ActionProduct/CreateModalProduct";
 import EditModalProduct from "../../components/module/ActionProduct/EditModalProduct";
+import Product from "../../assets/image/baju.png";
 
 const ProductList = () => {
   const [products, getProducts] = useState([]);
@@ -34,6 +35,7 @@ const ProductList = () => {
   }, []);
 
   const deleteCategory = async (id) => {
+    const token = localStorage.getItem("token");
     Swal.fire({
       title: "Are you sure to delete this product?",
       text: "You won't be able to revert this!",
@@ -45,7 +47,11 @@ const ProductList = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
-          .delete(`${process.env.REACT_APP_BACKEND}/product/${id}`)
+          .delete(`${process.env.REACT_APP_BACKEND}/product/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
           .then(() => {
             Swal.fire("Deleted!", "Your message has been deleted.", "success");
           })
@@ -129,12 +135,7 @@ const ProductList = () => {
                           <td>{item.stockproduct}</td>
                           <td>{item.priceproduct}</td>
                           <td>
-                            <img
-                              src={item.photo}
-                              alt=""
-                              width={50}
-                              height={55}
-                            />
+                            <img src={Product} alt="" width={50} height={55} />
                           </td>
                           <td>{item.description}</td>
                           <td>

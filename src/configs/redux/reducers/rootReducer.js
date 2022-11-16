@@ -1,5 +1,5 @@
-import {combineReducers} from 'redux'
-import {userReducer} from './userReducer'
+import { combineReducers } from "redux";
+import { userReducer } from "./userReducer";
 // import { UpdateUserReducer } from "./userReducer";
 import {
   productsReducer,
@@ -28,4 +28,4 @@ const rootReducer = combineReducers({
   bag: bagReducer,
 });
 
-export default rootReducer
+export default rootReducer;

@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useState } from "react";
 import "../StyleHome.css";
 // import product from "../../../../assets/image/product.png";
 import axios from "axios";
@@ -6,23 +6,25 @@ import Card from "../../../base/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { FormatRupiah } from "@arismun/format-rupiah";
 import { setProducts } from "../../../../configs/redux/actions/productsActions";
+import Product from "../../../../assets/image/baju.png";
 
 function Populer() {
-   const products = useSelector((state) => state.allProducts.products);
-   const dispatch = useDispatch();
-
-   const fetchProducts = async () => {
-     const response = await axios
-       .get(`${process.env.REACT_APP_BACKEND}/product?sortby=id&search=&sort=asc&page=1&limit=5`)
-       .catch((err) => {
-         console.log(err);
-       });
-     dispatch(setProducts(response.data.data));
-   };
-   useEffect(() => {
-     fetchProducts();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+  const [products, setProducts] = useState([]);
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND}/product`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setProducts(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div>
       <div className="container">
@@ -35,7 +37,7 @@ function Populer() {
             {products.map((item) => (
               <div className="col" key={item.id}>
                 <Card
-                  src={item.photo}
+                  src={Product}
                   to={`/detail/${item.id}`}
                   titleName={item.productname}
                   price={<FormatRupiah value={item.priceproduct} />}
@@ -49,4 +51,4 @@ function Populer() {
   );
 }
 
-export default Populer
+export default Populer;

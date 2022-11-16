@@ -17,7 +17,6 @@ import "../StyleHome.css";
 const Navbar = ({ onChange, sort }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  console.log(user);
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
@@ -28,14 +27,11 @@ const Navbar = ({ onChange, sort }) => {
         },
       }
     );
-    console.log(response.data.data.username);
-    setDate_of_birth(response.data.data[0].date_of_birth);
   };
   const handleSignOut = () => {
     localStorage.removeItem("id");
     dispatch(signOut());
   };
-  const [date_of_birth, setDate_of_birth] = useState("");
   useEffect(() => {
     datas();
   }, []);
@@ -68,7 +64,7 @@ const Navbar = ({ onChange, sort }) => {
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle variant="light" id="dropdown-basic">
                 <img
-                  src={date_of_birth ? date_of_birth : Profil}
+                  src={Profil}
                   alt=""
                   width={25}
                   height={25}

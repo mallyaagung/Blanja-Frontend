@@ -1,48 +1,47 @@
-import axios from 'axios'
-import swal from "sweetalert2"
+import axios from "axios";
+import swal from "sweetalert2";
 import { ActionTypes } from "../constants/action-types";
 
+export const loginUser = (dataForm, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_LOGIN_PENDING" });
+    const result = await axios.post(
+      `${process.env.REACT_APP_BACKEND}/user/login`,
+      dataForm
+    );
+    const user = result.data.data;
+    const role = result.data.data.roles;
+    const users = {
+      roles: result.data.data.roles,
+      email: result.data.data.email,
+    };
+    console.log(users);
+    const token = result.data.data.token;
+    const id = result.data.data.id;
+    localStorage.setItem("token", token);
+    localStorage.setItem("roles", role);
+    localStorage.setItem("id", id);
+    localStorage.setItem("refreshToken", user.refreshToken);
+    dispatch({ type: "USER_LOGIN_SUCCESS", payload: user });
 
-
-export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
-    try {
-        dispatch({type: 'USER_LOGIN_PENDING'})
-        const result = await axios.post(
-          `${process.env.REACT_APP_BACKEND}/user/login`,
-          dataForm
-        );
-      const user = result.data.data
-      const role = result.data.data
-      const users = {
-        roles: result.data.data.roles,
-        email : result.data.data.email
-      }
-      console.log(users);
-      const token = result.data.data.token
-        localStorage.setItem("token", token);
-        localStorage.setItem("roles", role);
-        localStorage.setItem("refreshToken", user.refreshToken);
-        dispatch({type: 'USER_LOGIN_SUCCESS', payload: user})
-
-      dispatch({
-        type: "USER_LOGIN_SUCCESS",
-        token: token.data,
-        payload: user,
-      });
-      swal.fire({
-        icon: "success",
-        text: (result.data.message),
-      });
-        navigate('/home')
-
-    } catch (error) {
-      swal.fire({
-      icon: "error",
-      text: (error.response.data.message),
+    dispatch({
+      type: "USER_LOGIN_SUCCESS",
+      token: token.data,
+      payload: user,
     });
-        console.log(error);
-    }
-}
+    swal.fire({
+      icon: "success",
+      text: result.data.message,
+    });
+    navigate("/home");
+  } catch (error) {
+    swal.fire({
+      icon: "error",
+      text: error.response.data.message,
+    });
+    console.log(error);
+  }
+};
 
 export const signUp = (dataForm, navigate) => async (dispatch) => {
   try {
@@ -52,9 +51,6 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
       dataForm
     );
     const user = result.data.data;
-    
-    localStorage.setItem("token", user.token);
-    localStorage.setItem("refreshToken", user.refreshToken);
     dispatch({ type: "USER_REGISTER_SUCCESS", payload: user });
     swal.fire({
       icon: "success",

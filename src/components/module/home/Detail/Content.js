@@ -6,6 +6,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 import retanggle from "../../../../assets/image/detail products/Rectangle 21.png";
 import shape from "../../../../assets/image/detail products/Shape (1).png";
+import Product from "../../../../assets/image/baju.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -17,9 +18,14 @@ const Content = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [products, setProducts] = useState([]);
+  const token = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND}/product/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND}/product/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         setProducts(response.data.data[0]);
       })
@@ -67,23 +73,23 @@ const Content = () => {
               <div className="galleries">
                 <div class="row mb-3">
                   <div className="container-galleries">
-                    <img src={photo} className="main-image" alt="" />
+                    <img src={Product} className="main-image" alt="" />
                   </div>
                 </div>
 
                 <div class="row my-2">
                   <div className="thumb justify-content-center">
                     <a href="/" className="">
-                      <img src={photo} alt="" />
+                      <img src={Product} alt="" />
                     </a>
                     <a href="/" className="">
-                      <img src={photo} alt="" />
+                      <img src={Product} alt="" />
                     </a>
                     <a href="/" className="">
-                      <img src={photo} alt="" />
+                      <img src={Product} alt="" />
                     </a>
                     <a href="/" className=" ">
-                      <img src={photo} alt="" />
+                      <img src={Product} alt="" />
                     </a>
                   </div>
                 </div>

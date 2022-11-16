@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import Footer from "../components/base/Footer/Footer";
 import Navbar from "../components/module/home/Navbar/Navbar";
+import Product from "../assets/image/baju.png";
 
 const MyProducts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,11 +27,17 @@ const MyProducts = () => {
   };
 
   const getProducts = async () => {
+    const token = localStorage.getItem("token");
     const cari =
       searchParams.get("search") === null ? "" : searchParams.get("search");
     axios
       .get(
-        `${process.env.REACT_APP_BACKEND}/product?search=${cari}&sort=${sort}`
+        `${process.env.REACT_APP_BACKEND}/product?search=${cari}&sort=${sort}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((response) => {
         console.log(response.data.data);
@@ -73,7 +80,7 @@ const MyProducts = () => {
               products.map((item) => (
                 <div className="col" key={item.id}>
                   <Card
-                    src={item.photo}
+                    src={Product}
                     to={`/detail/${item.id}`}
                     titleName={item.productname}
                     price={item.priceproduct}
