@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import NavbarBase from "../../../base/NavbarBase/Index";
@@ -17,6 +17,7 @@ import "../StyleHome.css";
 const Navbar = ({ onChange, sort }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const datas = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get(
@@ -29,8 +30,8 @@ const Navbar = ({ onChange, sort }) => {
     );
   };
   const handleSignOut = () => {
-    localStorage.removeItem("id");
     dispatch(signOut());
+    navigate("/login");
   };
   useEffect(() => {
     datas();

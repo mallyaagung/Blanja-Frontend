@@ -34,6 +34,8 @@ export const userReducer = (state = initialState, action) => {
       };
     case "SIGN_OUT":
       localStorage.removeItem("token");
+      localStorage.removeItem("id");
+      localStorage.removeItem("roles");
       return {
         token: null,
         name: null,
