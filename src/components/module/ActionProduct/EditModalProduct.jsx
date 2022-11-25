@@ -30,17 +30,17 @@ const ModalEdit = ({
     setSaveImage(uploader);
   }
   const [data, setData] = useState({
-    productname: "",
-    storename: "",
-    sizeproduct: "",
-    colorproduct: "",
-    priceproduct: "",
-    stockproduct: "",
-    ratingproduct: "",
-    id_category: "",
-    id_seller: "",
-    description: "",
-    photo: "",
+    productname,
+    storename,
+    sizeproduct,
+    colorproduct,
+    priceproduct,
+    stockproduct,
+    ratingproduct,
+    id_category,
+    id_seller,
+    description,
+    photo,
   });
 
   const handleChange = (e) => {

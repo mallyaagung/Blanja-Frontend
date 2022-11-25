@@ -135,7 +135,12 @@ const ProductList = () => {
                           <td>{item.stockproduct}</td>
                           <td>{item.priceproduct}</td>
                           <td>
-                            <img src={Product} alt="" width={50} height={55} />
+                            <img
+                              src={item.photo}
+                              alt=""
+                              width={50}
+                              height={55}
+                            />
                           </td>
                           <td>{item.description}</td>
                           <td>

@@ -72,6 +72,7 @@ export const selectedProduct = (product) => {
 export const updateProduct =
   (data, id, saveImage, setShow) => async (dispatch) => {
     try {
+      const token = localStorage.getItem("token");
       const formData = new FormData();
       formData.append("productname", data.productname);
       formData.append("storename", data.storename);
@@ -90,6 +91,7 @@ export const updateProduct =
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
         }
       );

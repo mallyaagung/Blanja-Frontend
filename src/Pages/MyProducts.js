@@ -80,7 +80,7 @@ const MyProducts = () => {
               products.map((item) => (
                 <div className="col" key={item.id}>
                   <Card
-                    src={Product}
+                    src={item.photo}
                     to={`/detail/${item.id}`}
                     titleName={item.productname}
                     price={item.priceproduct}

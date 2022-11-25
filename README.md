@@ -1,13 +1,18 @@
-# Hiring App
+# Blanja
 
-Hiring App is an web application where you can find a job that suit your skill. This app is develop using Next.JS. You can make account as a worker or a recruiter and put your project on the website.
+Blanja is an web application where you can buy a product that sold by seller in the website. You can pick various product from clothes, gadget, or any tools.
+
+## Framework
+
+[ReactJS](https://reactjs.org/)
+[ExpressJS](https://expressjs.com/)
 
 ## Usage
 
 First you need to clone the repositories.
 
 ```bash
-git clone https://github.com/mallyaagung/hiring-app-fe.git
+git clone https://github.com/mallyaagung/Blanja-Frontend.git
 ```
 
 After that run this command to install all the package needed.
@@ -26,11 +31,11 @@ npm run start
 
 To use this app use this link
 
-[Demo](https://hiring-app-fe.vercel.app/)
+[Demo](https://blanja-five.vercel.app/)
 
 ## Screenshot
 
-<img src="public/image/readme1.PNG" width="100%">
-<img src="public/image/readme2.PNG" width="100%">
-<img src="public/image/readme3.PNG" width="100%">
-<img src="public/image/readme4.png" width="100%">
+<img src="public/image/1.PNG" width="100%">
+<img src="public/image/2.PNG" width="100%">
+<img src="public/image/3.PNG" width="100%">
+<img src="public/image/4.png" width="100%">
